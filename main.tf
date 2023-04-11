@@ -1,5 +1,5 @@
 module "secret" {
-  source = "modules/secret-manager"
+  source = "./modules/secret-manager"
 
   project_name = var.project_name
   region       = var.region 
