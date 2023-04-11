@@ -3,5 +3,5 @@ module "secret" {
 
   #project_name = var.project_name
   #region       = var.region 
-  secret       = var.secret
+  secret       = var.secrets
 }
