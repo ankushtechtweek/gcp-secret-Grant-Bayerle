@@ -1,4 +1,3 @@
-
 resource "google_secret_manager_secret" "secret" {
   secret_id = var.secret_name
 
@@ -10,11 +9,11 @@ resource "google_secret_manager_secret" "secret" {
     }
   }
 
-  dynamic "secret_data" {
+  dynamic "secret_version" {
     for_each = var.secret_values
 
     content {
-      secret_data = secret_data.value
+      secret_data = secret_version.value
     }
   }
 }

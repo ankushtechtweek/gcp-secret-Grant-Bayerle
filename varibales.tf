@@ -20,5 +20,5 @@ variable "secret_name" {
 }
 
 variable "secret_values" {
-  type = list(string)
+  type = map(string)
 }
