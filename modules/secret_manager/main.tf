@@ -1,15 +1,20 @@
+
 resource "google_secret_manager_secret" "secret" {
-  secret_id = var.secret.secret_name
+  secret_id = var.secret_name
 
-  replication {
-    automatic = true
-  }
-
-  dynamic "secret_version" {
-    for_each = var.secret.secret_values
+  dynamic "replication" {
+    for_each = [1]
 
     content {
-      secret_data = secret_version.value
+      automatic = true
+    }
+  }
+
+  dynamic "secret_data" {
+    for_each = var.secret_values
+
+    content {
+      secret_data = secret_data.value
     }
   }
 }
