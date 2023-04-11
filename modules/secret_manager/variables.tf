@@ -1,5 +1,8 @@
 # variables.tf
 variable "secrets" {
-  type    = any
- # default = "my_secret"
+  type = list(object({
+    secret_name   = string
+    secret_value  = string
+    replication = list(string)
+  }))
 }

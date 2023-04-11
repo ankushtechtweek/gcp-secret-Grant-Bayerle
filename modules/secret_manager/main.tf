@@ -15,30 +15,23 @@ resource "google_secret_manager_secret_version" "secret_version" {
 }
 */
 
-
 resource "google_secret_manager_secret" "secrets" {
-  for_each = var.secrets
+  count = length(var.secrets)
 
-  secret_id = each.value.secret_name
+  secret_id = var.secrets[count.index].secret_name
 
   dynamic "replication" {
-    for_each = each.value.replication
-    content {
-      automatic = replication.value.automatic
+    for_each = var.secrets[count.index].replication
 
-      dynamic "location" {
-        for_each = replication.value.locations
-        content {
-          location = location.value
-        }
-      }
+    content {
+      location = replication.value
     }
   }
 }
 
-resource "google_secret_manager_secret_version" "secrets_versions" {
-  for_each = var.secrets
+resource "google_secret_manager_secret_version" "secrets" {
+  count = length(var.secrets)
 
-  secret     = google_secret_manager_secret.secrets[each.key].id
-  secret_data = each.value.secret_value
+  secret     = google_secret_manager_secret.secrets[count.index].id
+  secret_data = var.secrets[count.index].secret_value
 }

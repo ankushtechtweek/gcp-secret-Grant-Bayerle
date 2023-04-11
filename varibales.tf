@@ -14,8 +14,10 @@ description = "Region for the enviornment"
 type = any
 }
 
-
 variable "secrets" {
-  type = map
-
+  type = list(object({
+    secret_name   = string
+    secret_value  = string
+    replication = list(string)
+  }))
 }
