@@ -17,6 +17,6 @@ type = any
 
 
 variable "secret" {
-  type    = list(any)
-  default = "my_secret"
+  type    = any
+ # default = "my_secret"
 }
