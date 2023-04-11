@@ -16,7 +16,6 @@ resource "google_secret_manager_secret_version" "secret_version" {
 */
 
 
-
 resource "google_secret_manager_secret" "secrets" {
   for_each = var.secrets
 
@@ -25,12 +24,19 @@ resource "google_secret_manager_secret" "secrets" {
   dynamic "replication" {
     for_each = each.value.replication
     content {
-      location = replication.value.location
+      automatic = replication.value.automatic
+
+      dynamic "location" {
+        for_each = replication.value.locations
+        content {
+          location = location.value
+        }
+      }
     }
   }
 }
 
-resource "google_secret_manager_secret_version" "secrets" {
+resource "google_secret_manager_secret_version" "secrets_versions" {
   for_each = var.secrets
 
   secret     = google_secret_manager_secret.secrets[each.key].id
