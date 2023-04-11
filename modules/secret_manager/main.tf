@@ -7,13 +7,11 @@ resource "google_secret_manager_secret" "secret" {
     replication {
     automatic = true
   }
-  
+
 }
 
 resource "google_secret_manager_secret_version" "secret_version" {
-  secret = google_secret_manager_secret.secret.id
-  payload {
-    data = var.secret.secret_value
-  }
+  secret     = google_secret_manager_secret.secret.id
+  secret_data = var.secret.secret_value
 }
 
