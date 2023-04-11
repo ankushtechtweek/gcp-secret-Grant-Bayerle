@@ -1,4 +1,4 @@
-project_name = "test-project"
+project_name = "grant-bayerle"
 region       =  "us-east1"
 
 
