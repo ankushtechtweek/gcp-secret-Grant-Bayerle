@@ -1,6 +1,6 @@
 provider "google" {
   project = "${var.project_name}"
-    credentials = var.google_credentials
+    credentials = var.GOOGLE_CREDENTIALS
   region  = "${var.region}"
 }
 

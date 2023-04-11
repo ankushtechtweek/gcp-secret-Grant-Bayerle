@@ -4,7 +4,7 @@ description = "Project name"
 type = any
 }
 
-variable "google_credentials" {
+variable "GOOGLE_CREDENTIALS" {
   type = string
 }
 
