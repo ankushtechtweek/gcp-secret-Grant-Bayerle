@@ -1,5 +1,5 @@
 # variables.tf
-variable "secret_values" {
+variable "secret" {
   type    = any
  # default = "my_secret"
 }
