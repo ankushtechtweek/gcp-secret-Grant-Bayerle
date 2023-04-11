@@ -14,24 +14,19 @@ resource "google_secret_manager_secret_version" "secret_version" {
   secret_data = var.secret.secret_value
 }
 */
-
 resource "google_secret_manager_secret" "secrets" {
-  count = length(var.secrets)
+  for_each = var.secrets
 
-  secret_id = var.secrets[count.index].secret_name
+  secret_id = each.value.secret_name
 
-  dynamic "replication" {
-    for_each = var.secrets[count.index].replication
-
-    content {
-      location = replication.value
-    }
+  replication {
+    automatic = true
   }
 }
 
-resource "google_secret_manager_secret_version" "secrets" {
-  count = length(var.secrets)
+resource "google_secret_manager_secret_version" "secret_versions" {
+  for_each = var.secrets
 
-  secret     = google_secret_manager_secret.secrets[count.index].id
-  secret_data = var.secrets[count.index].secret_value
+  secret     = google_secret_manager_secret.secrets[each.key].id
+  secret_data = each.value.secret_value
 }
