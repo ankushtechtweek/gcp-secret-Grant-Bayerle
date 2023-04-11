@@ -2,7 +2,7 @@ project_name = "grant-bayerle"
 region       =  "us-east1"
 
 
-secret = {
+secret = [
 
 OPENAI_API_KEY = "bgdfb"
 RECALL_API_KEY = "bfbfb"
@@ -15,4 +15,4 @@ ZOOM_OAUTH_APP_CLIENT_SECRET = "gfbfgbgfb"
 ZOOM_OAUTH_APP_WEBHOOK_SECRET_TOKEN = "gfbgfbgfb"
 ZOOM_TOKEN_ENCRYPTION_KEY = "gfbfgbfgb"
 
-}
+]
