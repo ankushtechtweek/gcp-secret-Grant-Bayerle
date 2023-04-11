@@ -15,10 +15,7 @@ type = any
 }
 
 
-variable "secret_name" {
-  type = string
-}
-
-variable "secret_values" {
-  type = map(string)
+variable "secret" {
+  type    = any
+ # default = "my_secret"
 }
