@@ -1,7 +1,7 @@
 variable "project_name" {
 
 description = "Project name"
-  
+type = any
 }
 
 variable "google_credentials" {
@@ -12,7 +12,7 @@ variable "google_credentials" {
 variable "region" {
 
 description = "Region for the enviornment"
-
+type = any
 }
 
 
