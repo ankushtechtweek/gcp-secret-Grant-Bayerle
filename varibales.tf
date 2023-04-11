@@ -5,8 +5,7 @@ type = any
 }
 
 variable "GOOGLE_CREDENTIALS" {
-  type = string
-}
+  type = any
 
 
 variable "region" {
